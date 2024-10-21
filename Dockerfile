@@ -15,11 +15,11 @@ COPY . .
 RUN npm run build
 
 # prod
-FROM nginx:stable-alpine as prodiction-stage
-COPY --from=build-stage /app/dist /usr/share/nginx/html
+# FROM nginx:stable-alpine as prodiction-stage
+# COPY --from=build-stage /app/dist /usr/share/nginx/html
 
 # 포트 설정
 EXPOSE 1015
 
 # 컨테이너 실행 시 실행할 명령 정의
-CMD ["nginx", "-g", "daemon off"]
+CMD ["npm", "run", "dev"]
