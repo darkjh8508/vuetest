@@ -2,8 +2,6 @@
 
 # 베이스 이미지 설정
 FROM node:lts-alpine as build-stage
-# /app 디렉토리 생성
-RUN mkdir -p /app
 # 작업 디렉토리 설정
 WORKDIR /app
 # 의존성 설치
@@ -15,11 +13,11 @@ COPY . .
 RUN npm run build
 
 # prod
-# FROM nginx:stable-alpine as prodiction-stage
-# COPY --from=build-stage /app/dist /usr/share/nginx/html
+FROM nginx:stable-alpine as prodiction-stage
+COPY --from=build-stage /app/dist /usr/share/nginx/html
 
 # 포트 설정
-EXPOSE 1015
+EXPOSE 80
 
 # 컨테이너 실행 시 실행할 명령 정의
-CMD ["npm", "run", "dev"]
+CMD ["nginx", "-g", "daemon off;"]
