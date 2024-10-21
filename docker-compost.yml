@@ -1,0 +1,11 @@
+version: '3.3'
+services:
+  jenkins:
+    restart: always
+    container_name: jenkins
+    image: jenkins/jenkins
+    ports:
+      - "1015:8080"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock ubuntu/jenkins_home"
+      - "./jenkins_home:/var/jenkins_home"
