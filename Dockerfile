@@ -3,16 +3,16 @@
 # 베이스 이미지 설정
 FROM node:lts-alpine as build-stage
 # /app 디렉토리 생성
-RUN mkdir -p /app
+RUN sudo mkdir -p /app
 # 작업 디렉토리 설정
 WORKDIR /app
 # 의존성 설치
 COPY package*.json ./
-RUN npm install
+RUN sudo npm install
 # 애플리케이션 파일 추가
 COPY . .
 # 애플리케이션 빌드
-RUN npm run build
+RUN sudo npm run build
 
 # prod
 # FROM nginx:stable-alpine as prodiction-stage
