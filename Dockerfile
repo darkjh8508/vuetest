@@ -22,4 +22,4 @@ RUN npm run build
 EXPOSE 1015
 
 # 컨테이너 실행 시 실행할 명령 정의
-CMD ["npm", "run", "dev"]
+CMD ["sudo", "npm", "run", "dev"]
